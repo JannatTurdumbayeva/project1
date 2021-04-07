@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .forms import CreateProductForm, UpdateProductForm
-from .models import Category, Product
+from .forms import CreateProductForm, UpdateProductForm, CreateCommentForm
+from .models import Category, Product, Comment
 
 
 class SearchListView(ListView):
@@ -41,7 +42,6 @@ class ProductListView(ListView):
     template_name = 'product/list.html'
     context_object_name = 'products'
     paginate_by = 1
-
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -183,6 +183,46 @@ def cart_clear(request):
 @login_required(login_url='/account/login/')
 def cart_detail(request):
     return render(request, 'cart/cart_detail.html')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'delete_product.html'
+    pk_url_kwarg = 'product_id'
+
+    def get_success_url(self):
+        from django.urls import reverse
+        return reverse('home')
+
+
+class CommentPage(ListView):
+    model = Comment
+    template_name = 'product/list_comments.html'
+    context_object_name = 'list_comments'
+
+
+class CommentCreateView(CreateView):
+    model = Comment
+    template_name = 'product/comment.html'
+    form_class = CreateCommentForm
+
+    def form_valid(self, form):
+        product = self.kwargs['product_id']
+        user = self.request.user
+        print(product)
+        product = Product.objects.get(id=product)
+        comment = form.save(commit=False)
+        comment.product = product
+        comment.user = user
+        comment.save()
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_form'] = self.get_form(self.get_form_class())
+        return context
 
 
 # Create your views here.
