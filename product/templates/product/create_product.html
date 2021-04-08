@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<form style="color: #fff;" method="post" enctype="multipart/form-data">
+
+<div style="margin-top :20px; margin-left : 250px; " >
+<form style="color: #fff; " method="post" enctype="multipart/form-data">
     {{ product_form.as_p }}
     {% csrf_token %}
-    <button type="submit" class="btn btn-outline-secondary">Create</button>
+    <button style="" type="submit" class="btn btn-secondary">Create</button>
 </form>
-
+</div>
 {% endblock %}

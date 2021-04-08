@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import *
+from .models import Product, Comment
 
 class CreateProductForm(forms.ModelForm):
     class Meta:

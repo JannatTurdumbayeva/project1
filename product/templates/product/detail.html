@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+<div style="margin-top :20px; margin-left : 250px; " >
 {% if request.user.is_staff and request.user.is_superuser and request.user.is_authenticated %}
-<a class="btn btn-outline-success" href="{% url 'update-product' product.id %}" role="button">Update</a>
-<a class="btn btn-outline-danger" href="{% url 'delete-product' product.id %}" role="button">Delete</a>
+<a class="btn btn-secondary" href="{% url 'update-product' product.id %}" role="button">Update</a>
+<a class="btn btn-secondary" href="{% url 'delete-product' product.id %}" role="button">Delete</a>
 {% endif %}
 
+
+
 <figure style="text-align: center;" class="figure">
-    <img style="width: 500px; height: auto; border: 5px solid black;" src="{{ product.image.url }}" class="figure-img img-fluid rounded" alt="...">
-    <h4 style=" color: #fff;">Price: ${{ product.price }}</h4>
-    <h2 style="color: #fff;">{{ product.name }}</h2>
-    <figcaption style="color: #fff;" class="figure-caption">{{ product.description }}</figcaption>
+    <img style="width: 500px; height: auto; border: 5px solid;" src="{{ product.image.url }}" class="figure-img img-fluid rounded" alt="...">
+
+    <h3 style="">{{ product.name }}</h3>
+    <h4 style="">Price: ${{ product.price }}</h4>
+    <h6 style="" class="figure-caption">{{ product.description }}</h6>
 </figure>
 
 {% if request.user.is_authenticated %}
-<button type="submit" class="btn btn-danger"><a href="{% url 'add_comment' product.id %}" style="color:#fff">Comment</a></button>
-<button type="submit" class="btn btn-success"><a href="{% url 'list_comments' product.id %}" style="color:#fff">See all comments</a></button>
+<button type="submit" class="btn btn-secondary"><a href="{% url 'add_comment' product.id %}" style="color:#fff">Comment</a></button>
+<button type="submit" class="btn btn-secondary"><a href="{% url 'list_comments' product.id %}" style="color:#fff">See all comments</a></button>
 {% endif %}
-<h4>Comments...</h4>
+
 <br/>
 {% if not product.product.all %}
 No comments yet...
@@ -39,6 +44,7 @@ No comments yet...
 <br/><br/>
 <hr>
 {% endfor %}
-{% endif %}
+    {% endif %}
+</div>
 
 {% endblock %}

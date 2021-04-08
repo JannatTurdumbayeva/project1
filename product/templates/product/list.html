@@ -10,7 +10,7 @@
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'detail' product.id %}">{{ product.name }}</a></h5>
-                <p class="card-text">{{ product.description | truncatewords:10 }}</p>
+                <p style="color: Markdown;" class="card-text">{{ product.description | truncatewords:10 }}</p>
                 {% if product.status == 'in stock' %}
                 <p style="color: green;" class="card-text">В наличии</p>
                 {% elif product.status == 'out of stock' %}

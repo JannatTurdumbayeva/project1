@@ -25,10 +25,11 @@ class SearchListView(ListView):
 #     return render(request, 'product/home.html', {
 #                            'categories': categories})
 
+
 class CategoryListView(ListView):
     model = Category
     template_name = 'product/home.html'
-    context_object_name =  'categories'
+    context_object_name = 'categories'
 
 
 # def product_list(request, slug):
@@ -41,7 +42,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'product/list.html'
     context_object_name = 'products'
-    paginate_by = 1
+    paginate_by = 2
 
     def get_queryset(self):
         queryset = super().get_queryset()
