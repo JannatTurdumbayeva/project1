@@ -13,9 +13,9 @@
 <figure style="text-align: center;" class="figure">
     <img style="width: 500px; height: auto; border: 5px solid;" src="{{ product.image.url }}" class="figure-img img-fluid rounded" alt="...">
 
-    <h3 style="">{{ product.name }}</h3>
-    <h4 style="">Price: ${{ product.price }}</h4>
-    <h6 style="" class="figure-caption">{{ product.description }}</h6>
+    <h5 style="">{{ product.name }}</h5>
+    <h5 style="">Price: ${{ product.price }}</h5>
+    <h6 style="color: black;" class="figure-caption">{{ product.description }}</h6>
 </figure>
 
 {% if request.user.is_authenticated %}

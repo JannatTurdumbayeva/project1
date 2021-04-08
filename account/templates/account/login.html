@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<form style="color: #fff;" method="post" enctype="multipart/form-data">
+<form style="color: #fff; margin-left: 37%; margin-top:20px;" method="post" enctype="multipart/form-data">
     {{ form.as_p }}
     {% csrf_token %}
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button style="margin-left:15%;" type="submit" class="btn btn btn-secondary">Login</button>
 </form>
 
 {% endblock %}

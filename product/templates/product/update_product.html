@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div style="margin-left : 400px; " >
-<form style="color: #fff;" method="post" enctype="multipart/form-data">
+<form style="color: black" method="post" enctype="multipart/form-data">
     {{ product_form.as_p }}
     {% csrf_token %}
     <button type="submit" class="btn btn-secondary">Update</button>

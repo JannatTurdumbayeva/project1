@@ -18,11 +18,12 @@ body {
 
 <body >
 
+
 <nav class="navbar navbar-light bg-light">
 
-    <div class="container-fluid">
+    <div class="container-fluid" >
 
-        <a href="{% url 'home' %}" class="navbar-brand"><img style="width: 150px; height: auto;" src="{% static 'img/logo2.jpeg' %}"></a>
+        <a href="{% url 'home' %}" class="navbar-brand"><img style="width: 100px; height: auto; margin-left: 5px;" src="{% static 'img/logo3.png' %}"></a>
 
         <a href="{% url 'category' %}" class="navbar-brand">Categories</a>
         {% if not request.user.is_authenticated %}

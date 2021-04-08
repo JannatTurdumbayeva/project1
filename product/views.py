@@ -188,7 +188,7 @@ def cart_detail(request):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'delete_product.html'
+    template_name = 'product/delete_product.html'
     pk_url_kwarg = 'product_id'
 
     def get_success_url(self):
