@@ -2,10 +2,10 @@
 {% block content %}
 {% for comment in list_comments %}
 <div class="card">
-    <h5 class="card-header">{{ comment.user }}</h5>
+
     <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text">{{ comment.body }}</p>
+        <h6 style="color:dark-grey">{{ comment.user }}</h6>
+        <p style="color:grey" class="card-text">{{ comment.body }}</p>
     </div>
 </div>
 {% endfor %}

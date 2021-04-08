@@ -5,15 +5,15 @@
 
 {% for key,value in request.session.cart.items %}
 
-<div class="card" style="width: 25rem;">
+<div class="card" style="width: 25rem; margin-left:40%">
     <img src="{{value.image}}" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">{{value.name}}</h5>
+        <h5 style="color:grey" class="card-title">Title: {{value.name}}</h5>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{value.price}}</li>
-        <li class="list-group-item">{{value.quantity}}</li>
-        <li class="list-group-item">Total {{ value.price|multiply:value.quantity }}</li>
+        <li style="color:grey" class="list-group-item">Price: ${{value.price}}</li>
+        <li style="color:grey" class="list-group-item">Qty: {{value.quantity}}</li>
+        <li style="color:grey" class="list-group-item">Total: ${{ value.price|multiply:value.quantity }}</li>
     </ul>
     <div class="card-body">
         <a href="{% url 'item_increment' value.product_id %}"><img style="width: 20px; height: auto;" src="{% static 'img/plus.png' %}"></a>
@@ -23,7 +23,7 @@
 </div>
 {% endfor %}
 
-    <a href="{% url 'cart_clear' %}"><img style="width: 50px; height: auto; align='right'" src="{% static 'img/clear.jpg' %}"></a>
+    <a href="{% url 'cart_clear' %}"><img style="width: 50px; height: auto; margin-left:40%" src="{% static 'img/clear.jpg' %}"></a>
 
 {% endblock %}
 
